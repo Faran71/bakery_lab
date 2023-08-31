@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Cake from "../components/Cake";
+import "./CakeContainer.css"
 
 const CakeContainer = () => {
 
@@ -14,7 +15,8 @@ const CakeContainer = () => {
               "milk"
           ],
           price: 5,
-           rating: 5
+           rating: 5,
+           quantity: 0
         })
 
     const [teaLoaf, setTeaLoaf] = useState({
@@ -28,7 +30,8 @@ const CakeContainer = () => {
              "strong tea",
          ],
          price: 2,
-         rating: 3
+         rating: 3,
+         quantity: 0
         })
 
     const [carrotCake, setCarrotCake] = useState({
@@ -42,26 +45,36 @@ const CakeContainer = () => {
              "sugar",
           ],
           price: 8,
-          rating: 5
+          rating: 5,
+          quantity: 0
    })
 
 
     return(
-        <>
+        <div className="page">
            <Cake cakeName={victoriaSponge.cakeName} 
            ingredients={victoriaSponge.ingredients} 
            price={victoriaSponge.price} 
-           rating={victoriaSponge.rating}/>
+           rating={victoriaSponge.rating} 
+           quantity={victoriaSponge.quantity} 
+           onButtonClick={setVictoriaSponge}/>
            <Cake cakeName={teaLoaf.cakeName} 
            ingredients={teaLoaf.ingredients} 
            price={teaLoaf.price} 
-           rating={teaLoaf.rating}/>
+           rating={teaLoaf.rating} 
+           quantity={teaLoaf.quantity} 
+           onButtonClick={setTeaLoaf}/>
            <Cake cakeName={carrotCake.cakeName} 
            ingredients={carrotCake.ingredients} 
            price={carrotCake.price} 
-           rating={carrotCake.rating}/>
+           rating={carrotCake.rating} 
+           quantity={carrotCake.quantity} 
+           onButtonClick={setCarrotCake}/>
            <p>Average Rating: {(victoriaSponge.rating+ teaLoaf.rating+ carrotCake.rating)/3}</p>
-        </>
+           <h4>Total Cost: {(victoriaSponge.price*victoriaSponge.quantity)+
+           (teaLoaf.price*teaLoaf.quantity)+
+           (carrotCake.price*carrotCake.quantity)}</h4>
+        </div>
     )
 }
 

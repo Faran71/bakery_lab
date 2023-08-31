@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Cakes</h1>
-      <hr></hr>
+      {/* <hr></hr> */}
       <CakeContainer />
     </>
   );
